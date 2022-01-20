@@ -130,4 +130,8 @@ Facter.add(:self_service, type: :aggregate) do
     # Is Hiera 5 in use?
     { S0033: hiera_config_file.dig('version') == 5 }
   end
+  chunk(:S0040) do
+    # Is puppet_metrics_collector::system configured and collecting data
+    { S0040: File.exist?('/etc/systemd/system/puppet_system_processes-metrics.timer') }
+  end
 end
