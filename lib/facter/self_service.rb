@@ -132,6 +132,6 @@ Facter.add(:self_service, type: :aggregate) do
   end
   chunk(:S0040) do
     # Is puppet_metrics_collector::system configured and collecting data
-    { S0040: PuppetSelfService.service_running_enabled('service','puppet_system_memory-metrics.timer') }
+    { S0040: PuppetSelfService.get_resource('puppet_metrics_collector::sar_metric', 'system_memory') }
   end
 end
